@@ -1,0 +1,11 @@
+# Notas internas de construcción (no se publican)
+DECISIONES.md
+
+# Variables de entorno reales
+.env
+.env.*
+!.env.example
+
+# Sistema
+.DS_Store
+Thumbs.db
