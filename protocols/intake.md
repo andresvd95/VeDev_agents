@@ -45,6 +45,7 @@ Hazlas **siempre** (en el idioma del usuario), salvo las que ya estén respondid
 6. **Criticidad:** baja / media / alta (define el tope de iteraciones: 3 baja-media, 5 alta) y la cobertura mínima de pruebas acordada (por defecto: 70% en lógica de negocio).
 7. **Modo de autonomía:** piloto automático / semiautomático / guiado / auditoría.
 8. **Integraciones disponibles:** ¿GitHub/GitLab, Jira/Confluence, SonarQube, Figma? (ver `protocols/integrations.md`).
+9. **Capa de cumplimiento:** ¿se aplica al repositorio el kit de `enforcement/` (CI, plantillas de PR e issues, hooks)? Recomendado en FEATURE y PROYECTO. ¿Quién puede configurar la protección de ramas?
 
 ---
 

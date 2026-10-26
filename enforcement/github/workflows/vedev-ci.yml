@@ -1,0 +1,90 @@
+# vedev_agents — CI de cumplimiento
+# Hace cumplir en cada Pull Request las reglas de protocols/git-and-semver.md,
+# protocols/env-management.md y protocols/quality-gates.md.
+# Los nombres de los jobs ("Commits convencionales", "Secretos", "Pruebas") son los
+# checks obligatorios que pide la protección de ramas (enforcement/github/branch-protection.json).
+
+name: vedev-ci
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+  push:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  commits:
+    name: Commits convencionales
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      # El título del PR es el mensaje del squash-merge: debe seguir commits convencionales.
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            refactor
+            test
+            chore
+            perf
+            ci
+            build
+            style
+            revert
+
+  secrets:
+    name: Secretos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Para repositorios de una organización, gitleaks-action pide una licencia gratuita
+      # en el secreto GITLEAKS_LICENSE. En cuentas personales no hace falta.
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+      - name: Sin archivos .env reales en el repositorio
+        run: |
+          found=$(git ls-files | grep -E '(^|/)\.env(\..+)?$' | grep -v '\.env\.example$' || true)
+          if [ -n "$found" ]; then
+            echo "::error::Hay archivos .env reales versionados: $found"
+            exit 1
+          fi
+
+  tests:
+    name: Pruebas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Detección automática del stack más común. AJUSTA este paso al comando real de tu
+      # proyecto (o reemplázalo por el que defina el pack de tu empresa).
+      - name: Ejecutar pruebas
+        run: |
+          if [ -f package.json ]; then
+            npm ci && npm test --if-present
+          elif [ -f pyproject.toml ] || [ -f requirements.txt ]; then
+            python -m pip install --upgrade pip
+            if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            if [ -f pyproject.toml ]; then pip install -e . || true; fi
+            pip install pytest && pytest
+          elif [ -f go.mod ]; then
+            go test ./...
+          elif [ -f pom.xml ]; then
+            mvn -B test
+          elif [ -f gradlew ]; then
+            ./gradlew test
+          elif ls *.sln >/dev/null 2>&1 || ls *.csproj >/dev/null 2>&1; then
+            dotnet test
+          else
+            echo "::warning::No se detectó el stack. Configura el comando de pruebas en .github/workflows/vedev-ci.yml"
+          fi

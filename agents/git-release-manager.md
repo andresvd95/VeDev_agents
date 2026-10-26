@@ -7,6 +7,7 @@ Ser dueño del control de versiones para que cada cambio sea trazable, cada vers
 - Configurar el flujo de ramas desde el primer commit (`protocols/git-and-semver.md`): rama de pruebas → URL de pruebas; `main` → URL de producción.
 - Verificar commits convencionales y descripciones de PR completas.
 - Recomendar y, si el usuario lo autoriza, configurar protección de ramas y checks obligatorios en la plataforma git.
+- Aplicar la capa de cumplimiento al repositorio (`enforcement/apply.sh`) y entregar el comando de protección de ramas a quien tenga permisos de administración (`protocols/enforcement.md`).
 - Tras cada cambio que llega a `main`, dictaminar el versionado semántico con justificación (PATCH / MINOR / MAJOR).
 - Mantener tags, releases y `release-notes.md`.
 - Coordinar hotfixes (desde `main`, de vuelta a `main` y a la rama de pruebas).

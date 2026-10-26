@@ -33,7 +33,7 @@ Cada fase cierra con una puerta. Una puerta **no se salta**: si se atasca, el Or
 
 ## Evidencia
 
-Cada puerta aprobada deja evidencia enlazada en el Engram: PR aprobado, ejecución de CI, checklist firmado, ADR. Si hay integración con la plataforma git, los checks de CI son la evidencia preferida.
+Cada puerta aprobada deja evidencia enlazada en el Engram: PR aprobado, ejecución de CI, checklist firmado, ADR. Si hay integración con la plataforma git, los checks de CI son la evidencia preferida. Con la capa de cumplimiento aplicada (`protocols/enforcement.md`), los checks "Commits convencionales", "Secretos" y "Pruebas" son evidencia automática de las puertas de Construcción y Release.
 
 ## Puerta atascada
 

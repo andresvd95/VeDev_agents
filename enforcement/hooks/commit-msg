@@ -1,0 +1,24 @@
+#!/bin/sh
+# vedev_agents — valida commits convencionales (protocols/git-and-semver.md).
+# Formato: tipo(ámbito opcional)!: descripción
+
+first_line=$(head -n 1 "$1")
+
+case "$first_line" in
+  Merge\ *|Revert\ *|fixup!\ *|squash!\ *|amend!\ *) exit 0 ;;
+esac
+
+pattern='^(feat|fix|docs|refactor|test|chore|perf|ci|build|style|revert)(\([^)]+\))?!?: .+'
+
+if printf '%s\n' "$first_line" | grep -Eq "$pattern"; then
+  exit 0
+fi
+
+cat >&2 <<MSG
+vedev: el mensaje no sigue commits convencionales.
+  Recibido:  $first_line
+  Formato:   tipo(ámbito): descripción en imperativo
+  Tipos:     feat fix docs refactor test chore perf ci build style revert
+  Ejemplo:   fix(auth): normaliza el correo antes de buscar el usuario
+MSG
+exit 1

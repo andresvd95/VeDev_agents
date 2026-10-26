@@ -6,13 +6,13 @@
 
 An AI software-engineering team in a box: 23 specialized agents (architect, UX/UI, devs, QA, cybersecurity, DevOps, DBA, BI…) that take any project from idea to production. Spec-driven, token-efficient, engine-agnostic — Claude Code, Cursor, Codex, OpenCode & more.
 
-![Versión](https://img.shields.io/badge/versión-v0.1.0-blue)
+![Versión](https://img.shields.io/badge/versión-v0.2.0-blue)
 ![Estado](https://img.shields.io/badge/estado-especificación%20sin%20piloto-orange)
 ![Licencia](https://img.shields.io/badge/licencia-MIT-green)
 ![Agentes](https://img.shields.io/badge/agentes-23-purple)
 ![Formato](https://img.shields.io/badge/formato-Markdown%20puro-lightgrey)
 
-[Inicio rápido](#-inicio-rápido) · [Cómo funciona](#-cómo-funciona) · [El equipo](#-el-equipo) · [Instalación](#-instalación) · [Packs de empresa](#-packs-de-empresa) · [Hoja de ruta](#️-hoja-de-ruta)
+[Inicio rápido](#-inicio-rápido) · [Cómo funciona](#-cómo-funciona) · [El equipo](#-el-equipo) · [Instalación](#-instalación) · [Cumplimiento](#️-capa-de-cumplimiento) · [Packs de empresa](#-packs-de-empresa) · [Hoja de ruta](#️-hoja-de-ruta)
 
 </div>
 
@@ -28,6 +28,7 @@ vedev_agents resuelve las dos cosas:
 - ⚡ **Ceremonia proporcional al tamaño**: un parche usa 3 agentes, no 23.
 - 🔌 **Portable**: Markdown puro. Funciona en Claude Code, Cursor, Codex, OpenCode, Warp y más.
 - 🏢 **Personalizable sin forks**: lo propio de tu empresa vive en un *pack* aparte; el núcleo no se toca.
+- 🛡️ **Reglas que se cumplen solas**: CI, protección de ramas, plantillas y hooks hacen cumplir lo verificable, use o no la gente los agentes.
 
 ---
 
@@ -181,6 +182,29 @@ git clone https://github.com/andresvd95/VeDev_agents.git vedev_agents && printf 
 
 ---
 
+## 🛡️ Capa de cumplimiento
+
+Los protocolos dicen qué reglas sigue el equipo; la capa de cumplimiento hace que **el repositorio no deje romperlas**. Se aplica a tu proyecto en un paso (Git Bash en Windows):
+
+```bash
+sh .claude/skills/vedev_agents/enforcement/apply.sh
+```
+
+| Qué instala | Qué hace cumplir |
+|---|---|
+| CI (`vedev-ci`) | Título de PR con commits convencionales · escaneo de secretos · sin `.env` reales · pruebas |
+| Plantillas de PR e issues | Definición de Terminado en cada PR · historias con criterios Dado/Cuando/Entonces |
+| Hooks de git | Sin commits directos a `main`/`develop` · commits convencionales · sin `.env` en el commit |
+| Protección de ramas (un comando `gh`) | Solo por PR, con aprobación y checks obligatorios, sin force-push |
+
+GitHub y GitLab soportados. No borra nada y conserva los archivos que ya tengas. 👉 [enforcement/README.md](enforcement/README.md)
+
+## 🧩 Funciona con otras herramientas
+
+vedev es la **capa de proceso**; no compite con los paquetes de skills y agentes que ya uses, los aprovecha. Si en tu entorno hay, por ejemplo, revisores especializados por lenguaje (como los de *Everything Claude Code*) o flujos de TDD y depuración (como los de *Superpowers*), los agentes de vedev pueden delegarles el "cómo" de su paso, manteniendo los artefactos, las puertas y las reglas duras de vedev. Nada externo es obligatorio. 👉 [protocols/interop.md](protocols/interop.md)
+
+---
+
 ## 🏢 Packs de empresa
 
 El núcleo es genérico a propósito. Lo particular de tu empresa (regulación, stack oficial, nombres de ramas, gestor de secretos, canal de alertas, plantillas con tu formato, agentes extra) va en un **pack**, idealmente en un repositorio privado:
@@ -215,9 +239,12 @@ Así todo el equipo habla el mismo idioma, use o no los agentes.
 SKILL.md          Protocolo del Orquestador (lo que carga el entorno)
 agents/           16 agentes del núcleo
   specialists/    7 especialistas bajo demanda
-protocols/        intake · autonomía · cobertura · 3 opciones · memoria · git/semver
-                  · .env · design tokens · integraciones · economía de tokens · puertas de calidad
-templates/        PRD · TDD · ADR · historia · estado del proyecto · seguridad · deploy · release · auditoría
+protocols/        intake · autonomía · cobertura · 3 opciones · memoria · git/semver · .env
+                  · design tokens · integraciones · economía de tokens · puertas de calidad
+                  · cumplimiento · interoperabilidad · piloto
+templates/        PRD · TDD · ADR · historia · estado del proyecto · seguridad · deploy · release
+                  · auditoría · informe de piloto
+enforcement/      CI, plantillas de PR/issues, hooks y protección de ramas + apply.sh
 adapters/         instalación y activación por entorno
 packs/            cómo personalizar para una empresa sin tocar el núcleo
 docs/             guía del proceso para personas
@@ -228,16 +255,17 @@ docs/             guía del proceso para personas
 ## 🛣️ Hoja de ruta
 
 - [x] **v0.1.0** — Especificación completa: orquestador, 23 agentes, protocolos, plantillas, adaptadores
-- [ ] **v0.2.0** — Piloto en proyectos reales (un parche, una feature, un proyecto) con métricas de tokens y calidad
-- [ ] **v0.3.0** — Adaptadores validados en cada entorno (incluye Orca y Hermes)
-- [ ] **v0.4.0** — Plantillas de CI y protección de ramas listas para copiar
+- [x] **v0.2.0** — Capa de cumplimiento (CI, plantillas, hooks, protección de ramas), interoperabilidad y protocolo de piloto
+- [ ] **v0.3.0** — Piloto ejecutado en proyectos reales (un parche, una feature, un proyecto) con informe publicado
+- [ ] **v0.4.0** — Adaptadores validados en cada entorno (incluye Orca y Hermes)
 - [ ] **v1.0.0** — Estable, con benchmark publicado
 
 ## ⚠️ Estado y limitaciones
 
-Lo decimos claro: **v0.1.0 es una especificación construida, todavía sin piloto.**
+Lo decimos claro: **v0.2.0 sigue sin piloto.** El protocolo para medirlo ya está en [protocols/pilot.md](protocols/pilot.md).
 
 - La eficiencia de tokens está diseñada pero **aún no medida**.
+- La capa de cumplimiento se probó localmente (hooks e instalador), pero el CI aún no se ha ejecutado en un repositorio real.
 - El Centinela define políticas y verifica; el monitoreo continuo y los backups programados los ejecutan herramientas reales (CI, nube, monitoreo).
 - El consumo de tokens se reporta cuando el entorno lo expone; si no, se estima y se marca como estimación.
 - Los adaptadores de Orca y Hermes están por verificar.

@@ -51,6 +51,8 @@
 - **Activas:** [ … ]
 - **Ausentes:** [ … — cómo se suple]
 - **Figma:** [no aplica | Tokens → Figma | Figma → Tokens]
+- **Capa de cumplimiento:** [no aplicada | aplicada: CI, plantillas, hooks] · protección de ramas: [main ✔/✘ · develop ✔/✘]
+- **Herramientas externas usadas:** [ninguna | paquete — para qué paso]
 
 ## 9. Presupuesto de tokens
 - **Presupuesto:** [n | sin límite explícito]

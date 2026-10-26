@@ -1,0 +1,34 @@
+# vedev_agents — CI de cumplimiento para GitLab.
+# Copia como .gitlab-ci.yml (o inclúyelo desde el tuyo). Equivalente a enforcement/github/workflows/vedev-ci.yml.
+
+include:
+  - template: Jobs/Secret-Detection.gitlab-ci.yml
+
+stages:
+  - cumplimiento
+  - test
+
+commits-convencionales:
+  stage: cumplimiento
+  image: alpine:3.20
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  script:
+    - |
+      echo "$CI_MERGE_REQUEST_TITLE" | grep -Eq '^(feat|fix|docs|refactor|test|chore|perf|ci|build|style|revert)(\([^)]+\))?!?: .+' \
+        || { echo "El título del MR debe seguir commits convencionales: tipo(ámbito): descripción"; exit 1; }
+
+sin-env-reales:
+  stage: cumplimiento
+  image: alpine/git:latest
+  script:
+    - |
+      found=$(git ls-files | grep -E '(^|/)\.env(\..+)?$' | grep -v '\.env\.example$' || true)
+      if [ -n "$found" ]; then echo "Hay archivos .env reales versionados: $found"; exit 1; fi
+
+pruebas:
+  stage: test
+  # AJUSTA la imagen y el comando al stack de tu proyecto (o al que defina el pack de tu empresa).
+  image: node:20
+  script:
+    - if [ -f package.json ]; then npm ci && npm test --if-present; else echo "Configura el comando de pruebas en .gitlab-ci.yml"; fi

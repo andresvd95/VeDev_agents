@@ -1,0 +1,4 @@
+# Los scripts de shell deben tener saltos de línea LF para funcionar en cualquier sistema.
+*.sh text eol=lf
+enforcement/hooks/* text eol=lf
+*.yml text eol=lf

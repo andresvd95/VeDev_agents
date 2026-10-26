@@ -1,0 +1,13 @@
+# vedev_agents — ejemplo de propietarios de código.
+# Copia como .github/CODEOWNERS y reemplaza los equipos/usuarios. La protección de ramas
+# puede exigir la aprobación del propietario del área que cambia.
+
+# Por defecto
+*                       @tu-org/lideres-tecnicos
+
+# Por área (ejemplos)
+/backend/               @tu-org/backend
+/frontend/              @tu-org/frontend
+/infra/                 @tu-org/devops
+/.github/               @tu-org/lideres-tecnicos
+/docs/adr/              @tu-org/arquitectura
