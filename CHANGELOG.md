@@ -10,6 +10,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). V
 ### Cambiado
 - `SKILL.md`, `protocols/intake.md` (nuevo Paso 3), `protocols/quality-gates.md`, `agents/orchestrator.md` y `agents/requirements-analyst.md`: nada se omite sin preguntar; las puertas verifican el nivel acordado.
 - `templates/project-state.md`: sección "Ajustes de ceremonia". `packs/README.md`: puntos bloqueados por empresa. Guía del equipo y README actualizados.
+- README: nueva sección "El equipo: cómo funcionan los agentes" con diagrama de las dos capas, anatomía de un agente, tabla de quién trabaja en cada ruta, diagrama de secuencia de una feature y directorio de agentes con misión, entradas, salidas y piso de modelo.
 
 ## [0.2.0] — 2026-10-25
 

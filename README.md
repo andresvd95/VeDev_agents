@@ -12,7 +12,7 @@ An AI software-engineering team in a box: 23 specialized agents (architect, UX/U
 ![Agentes](https://img.shields.io/badge/agentes-23-purple)
 ![Formato](https://img.shields.io/badge/formato-Markdown%20puro-lightgrey)
 
-[Inicio rápido](#-inicio-rápido) · [Cómo funciona](#-cómo-funciona) · [El equipo](#-el-equipo) · [Instalación](#-instalación) · [Cumplimiento](#️-capa-de-cumplimiento) · [Packs de empresa](#-packs-de-empresa) · [Hoja de ruta](#️-hoja-de-ruta)
+[Inicio rápido](#-inicio-rápido) · [Cómo funciona](#-cómo-funciona) · [El equipo](#-el-equipo-cómo-funcionan-los-agentes) · [Instalación](#-instalación) · [Cumplimiento](#️-capa-de-cumplimiento) · [Packs de empresa](#-packs-de-empresa) · [Hoja de ruta](#️-hoja-de-ruta)
 
 </div>
 
@@ -123,42 +123,201 @@ Los proyectos existentes **entran en la fase que corresponda**: un mantenimiento
 
 ---
 
-## 👥 El equipo
+## 👥 El equipo: cómo funcionan los agentes
 
-### Piso 1 — Núcleo (16 agentes)
+vedev_agents imita un equipo de ingeniería real: un **Tech Lead** (el Orquestador) que recibe el trabajo y decide quién participa, un **núcleo** de 16 roles que cubren el ciclo de vida completo, y **7 especialistas** que solo entran cuando el proyecto los necesita.
 
-| Agente | Qué hace | Piso de modelo |
+### Las dos capas
+
+```mermaid
+flowchart TB
+    U([👤 Tú]) <--> O
+    O["🎯 ORQUESTADOR · Tech Lead<br/>intake · ruta · convoca · custodia la memoria"]
+    O <--> M[("🧠 project-state.md<br/>memoria del proyecto")]
+
+    subgraph P1["🔷 PISO 1 · NÚCLEO (16)"]
+        PL["📐 PLANIFICAR<br/>Viabilidad · Requerimientos · Arquitecto<br/>Repo Scout · UX/UI"]
+        CO["🛠️ CONSTRUIR<br/>Dev Backend · Dev Frontend · Dev Data<br/>Git & Release"]
+        VE["🔍 VERIFICAR<br/>Code Reviewer · QA Engineer · Ciberseguridad"]
+        EN["🚀 ENTREGAR Y OPERAR<br/>Documentador · DevOps / Deploy · Centinela"]
+        PL --> CO --> VE --> EN
+    end
+
+    subgraph P2["🔶 PISO 2 · ESPECIALISTAS (7)"]
+        subgraph ESP[" "]
+            direction LR
+            E1[DBA] ~~~ E2[BI] ~~~ E3[Contenedores] ~~~ E4[Cloud]
+            E5[Infra / SRE] ~~~ E6[Rendimiento] ~~~ E7[IA de producto]
+        end
+    end
+
+    O ==>|convoca según la ruta| PL
+    EN -.->|"solo si la matriz<br/>lo justifica"| P2
+
+    classDef orq fill:#1f6feb,stroke:#0b3d91,color:#fff
+    classDef mem fill:#8957e5,stroke:#5a32a3,color:#fff
+    classDef fase fill:#ddf4ff,stroke:#54aeff,color:#0a3069
+    classDef esp fill:#fff1e5,stroke:#fb8f44,color:#762c00
+    class O orq
+    class M mem
+    class PL,CO,VE,EN fase
+    class E1,E2,E3,E4,E5,E6,E7 esp
+```
+
+| | 🔷 Piso 1 — Núcleo | 🔶 Piso 2 — Especialistas |
 |---|---|---|
-| [Orquestador](agents/orchestrator.md) | Tech Lead: intake, ruta, convoca agentes, custodia la memoria. No escribe código | Fuerte / estándar |
-| [Analista de viabilidad](agents/feasibility-analyst.md) | ¿Vale la pena? Construir, comprar o reutilizar | Estándar |
-| [Analista de requerimientos](agents/requirements-analyst.md) | Historias con criterios Dado/Cuando/Entonces, MoSCoW, PRD | Estándar |
-| [Arquitecto](agents/architect.md) | TDD, diagramas C4/UML, stack, regla de 3 opciones, ADR | Fuerte |
-| [Repo Scout](agents/repo-scout.md) | Busca lo que ya existe antes de construir. Solo recomienda | Económico |
-| [Diseñador UX/UI](agents/ux-ui-designer.md) | Flujos, pantallas con estados, WCAG 2.2 AA, design tokens, Figma | Estándar |
-| [Dev Backend](agents/dev-backend.md) | Lógica de servidor, APIs, integraciones | Estándar |
-| [Dev Frontend](agents/dev-frontend.md) | Interfaces 100% basadas en tokens, responsive y accesibles | Estándar |
-| [Dev Data](agents/dev-data.md) | Esquemas, migraciones reversibles, consultas | Estándar |
-| [Git & Release Manager](agents/git-release-manager.md) | Ramas, commits convencionales, SemVer, releases | Económico |
-| [Code Reviewer](agents/code-reviewer.md) | Revisión independiente con hallazgos `archivo:línea` | Fuerte |
-| [QA Engineer](agents/qa-engineer.md) | Pruebas derivadas de la especificación, suites rápida y completa | Estándar |
-| [Ciberseguridad](agents/cybersecurity-engineer.md) | STRIDE, OWASP Top 10, secretos, privacidad y cumplimiento | Fuerte |
-| [Documentador](agents/documenter.md) | README, API, runbook, changelog, postmortems | Estándar |
-| [DevOps / Deploy](agents/devops-deploy.md) | CI/CD, guía de despliegue, rollback. Producción solo con permiso | Estándar |
-| [El Centinela](agents/sentinel.md) | Presupuesto de tokens, backups verificados, salud, incidentes | Económico |
+| **Qué cubre** | El ciclo de vida de cualquier proyecto: planificar, construir, verificar, entregar y operar | Disciplinas que solo algunos proyectos necesitan: datos, BI, contenedores, nube, infraestructura, rendimiento, IA |
+| **Cuándo entra** | Según la ruta (PARCHE, FEATURE o PROYECTO) | Solo si la [matriz de cobertura](protocols/coverage-matrix.md) lo justifica |
+| **Costo en reposo** | Solo los convocados consumen tokens | Cero: no se cargan |
+| **Transparencia** | El Orquestador declara quién trabaja en cada fase | El Orquestador declara activos, descartados **y la razón** de cada descarte |
 
-### Piso 2 — Especialistas bajo demanda (7 agentes)
+### Anatomía de un agente
 
-En reposo no consumen contexto. Se activan solo si la [matriz de cobertura](protocols/coverage-matrix.md) lo indica, y el Orquestador te dice por qué.
+Cada agente es un archivo Markdown con **8 secciones fijas**. Funciona como un contrato: qué recibe, qué entrega y cuándo terminó.
 
-| Especialista | Se activa cuando… |
+```mermaid
+flowchart LR
+    IN["📥 ENTRADAS<br/>solo artefactos:<br/>historia, TDD, ADR, diff…<br/>nunca el chat"] --> AG
+    AG["🤖 AGENTE<br/>misión · responsabilidades<br/>herramientas permitidas<br/>reglas duras · piso de modelo"] --> OUT
+    OUT["📤 SALIDAS<br/>artefactos con plantilla:<br/>PRD, ADR, PR, veredicto,<br/>reporte de pruebas…"] --> DONE
+    DONE{"✅ ¿Criterio de<br/>terminado cumplido?"} -->|sí| ORQ["🎯 Orquestador<br/>registra y sigue"]
+    DONE -->|no · máx. 3 rondas| AG
+```
+
+| Sección | Para qué sirve |
 |---|---|
-| [DBA / Arquitecto de datos](agents/specialists/dba-data-architect.md) | Hay base de datos propia, volumen serio o migraciones |
-| [BI y dashboards](agents/specialists/bi-dashboards.md) | El negocio pide reportes o tableros de decisión |
-| [Contenedores](agents/specialists/containers-specialist.md) | El despliegue es contenerizado o multiservicio |
-| [Arquitecto cloud](agents/specialists/cloud-architect.md) | Nube nueva, migración o costos que gobernar |
-| [Infra, redes y SRE](agents/specialists/infra-networks-sre.md) | Infraestructura propia o red no trivial |
-| [Rendimiento](agents/specialists/performance-engineer.md) | Hay requisitos de carga o latencia, o lentitud reportada |
-| [IA de producto](agents/specialists/ai-product-engineer.md) | El producto tiene una capa de IA activa (no una idea futura) |
+| **Misión** | Una frase: por qué existe el agente |
+| **Responsabilidades** | Qué hace, en concreto |
+| **Entradas** | Los únicos documentos que recibe. Así cada agente gasta solo el contexto de su fase |
+| **Salidas** | Lo que entrega, siempre con una plantilla de `templates/` |
+| **Herramientas permitidas y prohibidas** | Qué puede tocar. Ej.: el Repo Scout recomienda pero jamás instala |
+| **Piso de modelo** | 🟢 económico, 🟡 estándar o 🔴 fuerte según la dificultad del rol |
+| **Reglas duras** | Líneas que nunca cruza. Ej.: el dev no aprueba su propio código |
+| **Criterio de terminado** | Checklist verificable para dar el trabajo por cerrado |
+
+### Quién trabaja en cada ruta
+
+✅ siempre · ◐ según el caso · — no participa
+
+| Agente | ⚡ PARCHE | 🧩 FEATURE | 🏗️ PROYECTO |
+|---|:---:|:---:|:---:|
+| 🎯 Orquestador | ✅ | ✅ | ✅ |
+| Viabilidad | — | — | ✅ |
+| Requerimientos | ◐ ¹ | ✅ | ✅ |
+| Arquitecto | ◐ ² | ◐ | ✅ |
+| Repo Scout | — | ◐ | ✅ |
+| UX/UI | — | ◐ ³ | ◐ ³ |
+| Devs (backend, frontend, data) | ✅ ⁴ | ✅ ⁴ | ✅ |
+| Git & Release | ◐ | ✅ | ✅ |
+| Code Reviewer | ✅ | ✅ | ✅ |
+| QA Engineer | ✅ | ✅ | ✅ |
+| Ciberseguridad | ◐ ⁵ | ✅ | ✅ |
+| Documentador | ◐ | ✅ | ✅ |
+| DevOps / Deploy | — | ◐ | ✅ |
+| Centinela | — | ◐ | ✅ |
+| 🔶 Especialistas | — | ◐ ⁶ | ◐ ⁶ |
+
+¹ Solo la historia mínima del parche · ² Solo si toca una decisión de arquitectura vigente · ³ Solo si hay interfaz · ⁴ Solo la capa que cambia · ⁵ Mini-checklist si toca datos, entradas o permisos · ⁶ Según la matriz de cobertura
+
+### Así colaboran: una feature de principio a fin
+
+Ejemplo: *"Agrega exportación a Excel en el módulo de reportes"*.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 👤 Tú
+    participant O as 🎯 Orquestador
+    participant R as Requerimientos
+    participant QA as QA Engineer
+    participant D as Dev Backend
+    participant CR as Code Reviewer
+    participant S as Ciberseguridad
+    participant DOC as Documentador
+
+    U->>O: "Agrega exportación a Excel"
+    O->>O: Carga la memoria y clasifica: FEATURE
+    O->>U: Ruta, agentes activos y ajustes de ceremonia
+    U->>O: Acepto
+    O->>R: Solicitud + contexto del proyecto
+    R-->>O: Historia con criterios Dado/Cuando/Entonces
+    O->>QA: Historia (sin código todavía)
+    QA-->>O: Casos de prueba derivados de los criterios
+    O->>D: Historia + diseño técnico vigente
+    D-->>O: PR + nota de cambios
+    loop Máximo 3 rondas
+        O->>CR: Diff + historia + pruebas de QA
+        CR-->>O: APROBADO o CAMBIOS REQUERIDOS
+        O->>QA: Ejecutar pruebas
+        QA-->>O: Resultado
+    end
+    O->>S: Diff (checklist de seguridad)
+    S-->>O: Checklist firmado
+    O->>DOC: Notas de cambios
+    DOC-->>O: README y changelog al día
+    O->>U: Reporte: artefactos, versión sugerida, siguiente paso
+```
+
+Fíjate en los pasos 7 y 8: **QA escribe las pruebas desde la historia antes de que exista el código**. Así las pruebas verifican lo que se pidió, no lo que el dev asumió.
+
+### Directorio de agentes
+
+Piso de modelo: 🟢 económico · 🟡 estándar · 🔴 fuerte
+
+#### 🔷 Piso 1 — Núcleo
+
+**🎯 Dirección**
+
+| Agente | Misión | Recibe | Entrega | Modelo |
+|---|---|---|---|:---:|
+| [Orquestador](agents/orchestrator.md) | Dirigir el equipo con la mínima ceremonia que exige cada tarea. No escribe código | Tu solicitud y la memoria del proyecto | Reportes por fase y memoria actualizada | 🔴 / 🟡 |
+
+**📐 Planificar**
+
+| Agente | Misión | Recibe | Entrega | Modelo |
+|---|---|---|---|:---:|
+| [Viabilidad](agents/feasibility-analyst.md) | Decidir si vale la pena antes de invertir | La idea y las respuestas del intake | Dictamen: viable / con condiciones / no viable | 🟡 |
+| [Requerimientos](agents/requirements-analyst.md) | Convertir la idea en alcance sin ambigüedad | La solicitud y el dictamen | Historias con criterios y PRD | 🟡 |
+| [Arquitecto](agents/architect.md) | Diseñar la solución y guiar las decisiones mayores | PRD e historias | TDD, tabla de 3 opciones y ADR | 🔴 |
+| [Repo Scout](agents/repo-scout.md) | Encontrar lo que ya existe para no reinventarlo | Una necesidad concreta y el stack | Hasta 5 candidatos evaluados. Nunca instala | 🟢 |
+| [UX/UI](agents/ux-ui-designer.md) | Diseñar pantallas antes de programarlas | Historias y Figma (si hay) | Especificación de pantallas y design tokens | 🟡 |
+
+**🛠️ Construir**
+
+| Agente | Misión | Recibe | Entrega | Modelo |
+|---|---|---|---|:---:|
+| [Dev Backend](agents/dev-backend.md) | Implementar servidor, APIs e integraciones | Historia, TDD y ADR | PR con nota de cambios | 🟡 |
+| [Dev Frontend](agents/dev-frontend.md) | Construir interfaces fieles al diseño | Historia, pantallas y tokens | PR con las pantallas en 3 tamaños | 🟡 |
+| [Dev Data](agents/dev-data.md) | Implementar la capa de datos de forma reversible | Historia y modelo de datos | Migraciones reversibles y PR | 🟡 |
+| [Git & Release](agents/git-release-manager.md) | Hacer cada cambio trazable y cada versión justificada | PRs y veredictos | Versión SemVer, tag y notas de versión | 🟢 |
+
+**🔍 Verificar**
+
+| Agente | Misión | Recibe | Entrega | Modelo |
+|---|---|---|---|:---:|
+| [Code Reviewer](agents/code-reviewer.md) | Revisar con ojos frescos e independientes | Diff, historia, ADR y pruebas de QA | Aprobado o cambios, con hallazgos `archivo:línea` | 🔴 |
+| [QA Engineer](agents/qa-engineer.md) | Demostrar con pruebas que se cumple lo pedido | Criterios (antes del código) y luego la implementación | Matriz criterio → prueba, tests y reporte | 🟡 |
+| [Ciberseguridad](agents/cybersecurity-engineer.md) | Diseñar la seguridad desde el inicio | TDD y diffs | Modelo de amenazas y checklist firmado | 🔴 |
+
+**🚀 Entregar y operar**
+
+| Agente | Misión | Recibe | Entrega | Modelo |
+|---|---|---|---|:---:|
+| [Documentador](agents/documenter.md) | Que la documentación diga lo que el sistema hace | Notas de cambios y docs existentes | README, API, runbook y changelog | 🟡 |
+| [DevOps / Deploy](agents/devops-deploy.md) | Desplegar de forma repetible y reversible | Release aprobado | Guía de despliegue, CI/CD y reporte post-deploy | 🟡 |
+| [Centinela](agents/sentinel.md) | Detectar problemas antes de que sean incidentes | Consumo, monitoreo y backups | Alertas 50/80/100%, política de backups y bitácora | 🟢 |
+
+#### 🔶 Piso 2 — Especialistas bajo demanda
+
+| Especialista | Se activa cuando… | Entrega | Modelo |
+|---|---|---|:---:|
+| [DBA / Arquitecto de datos](agents/specialists/dba-data-architect.md) | Hay base de datos propia, volumen serio o migraciones | Modelo y diccionario de datos, plan de migraciones, RPO/RTO | 🔴 / 🟡 |
+| [BI y dashboards](agents/specialists/bi-dashboards.md) | El negocio pide reportes o tableros de decisión | Catálogo de métricas y dashboards | 🟡 |
+| [Contenedores](agents/specialists/containers-specialist.md) | El despliegue es contenerizado o multiservicio | Imágenes endurecidas y manifiestos | 🟡 |
+| [Arquitecto cloud](agents/specialists/cloud-architect.md) | Nube nueva, migración o costos que gobernar | ADR de nube, infraestructura como código, costo mensual | 🔴 / 🟡 |
+| [Infra, redes y SRE](agents/specialists/infra-networks-sre.md) | Infraestructura propia o red no trivial | Diseño de red, SLOs y observabilidad | 🟡 |
+| [Rendimiento](agents/specialists/performance-engineer.md) | Hay requisitos de carga o latencia, o lentitud reportada | Presupuestos de rendimiento e informe de carga | 🟡 |
+| [IA de producto](agents/specialists/ai-product-engineer.md) | El producto tiene una capa de IA activa (no una idea futura) | Diseño de la capa de IA, evaluaciones y costo por usuario | 🔴 |
 
 ---
 
