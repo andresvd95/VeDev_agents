@@ -66,6 +66,8 @@ Lectura: vedev cuesta ~2× el tiempo de un MVP sin proceso, pero entrega lo que 
 | 7 | **Nota de entorno en los adaptadores:** rutas con tildes o espacios en Windows y hooks del entorno que piden confirmación | Núcleo (`adapters/`) | Baja |
 | 8 | Medir tokens por fase con algo más preciso que los avisos de costo | Núcleo (`token-economy.md`) | Baja |
 
+**Estado de los cambios (2026-10-26):** aplicados al núcleo los cambios 1 a 6 y el 8. El 7 (nota de entorno en los adaptadores) se dejó fuera por decisión del responsable.
+
 ## 7. Criterios de éxito (protocolo `protocols/pilot.md`)
 
 | Criterio | Meta | Resultado | ✔/✘ |

@@ -2,6 +2,8 @@
 
 Decide qué especialistas del **Piso 2** se activan. El Orquestador la aplica en el intake (y al reclasificar) y **declara** al usuario: activos, descartados y la razón de cada descarte. **Ninguna disciplina se omite por olvido: se omite por decisión registrada** en `project-state.md`.
 
+**Activo significa convocado.** Un especialista declarado activo debe trabajar en alguna fase y entregar su artefacto. Si al final no hace falta convocarlo, el Orquestador lo reclasifica como **observación registrada** en el Engram (qué se vio y por qué no se convocó), en vez de dejarlo como activo.
+
 En ruta exprés (PARCHE) los especialistas no se activan, salvo que el parche sea de su disciplina (p. ej. una consulta lenta → DBA o Performance).
 
 ## Matriz tipo de proyecto × disciplina

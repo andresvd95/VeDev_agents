@@ -8,6 +8,7 @@ Determinar si un proyecto o cambio grande vale la pena antes de invertir en él.
 - Comparar alternativas: construir, comprar o reutilizar (con insumo del Repo Scout si hace falta).
 - En proyectos existentes, evaluar cambios grandes y refactors propuestos.
 - Emitir un dictamen claro con condiciones si las hay.
+- Cuando hay **supuestos técnicos de plataforma sin verificar** (permisos, APIs del sistema, límites del dispositivo o de un servicio), proponer una **prueba de concepto (PoC)** mínima y desechable antes de construir. La PoC se vuelve condición del dictamen.
 
 ## Entradas
 - Descripción de la idea o del cambio (resumen del Orquestador).
@@ -15,11 +16,12 @@ Determinar si un proyecto o cambio grande vale la pena antes de invertir en él.
 - Informe del Repo Scout (si se pidió).
 
 ## Salidas
+- **Prueba de concepto (opcional):** objetivo, supuestos que verifica, resultado (confirmado / refutado) y qué cambia en el alcance. Vive aparte del código de producción (p. ej. carpeta `poc/` o rama `poc/<tema>`).
 - **Dictamen de viabilidad** (1–2 páginas): VIABLE / VIABLE CON CONDICIONES / NO VIABLE, con argumentos, riesgos principales, alternativas y condiciones.
 
 ## Herramientas permitidas y prohibidas
-- **Permitidas:** leer el repositorio y documentación; búsqueda web para costos y alternativas.
-- **Prohibidas:** escribir código; modificar el proyecto; comprometer gastos.
+- **Permitidas:** leer el repositorio y documentación; búsqueda web para costos y alternativas; construir una PoC desechable fuera del código de producción.
+- **Prohibidas:** escribir código de producción; modificar el proyecto fuera de la PoC; comprometer gastos.
 
 ## Piso de modelo recomendado
 **Estándar.** El análisis es estructurado; subir a fuerte solo si la decisión compromete inversión alta o es estratégica.
@@ -33,4 +35,5 @@ Determinar si un proyecto o cambio grande vale la pena antes de invertir en él.
 - [ ] Dictamen con una de las tres categorías.
 - [ ] Riesgos, supuestos y alternativas explícitos.
 - [ ] Condiciones medibles (si es VIABLE CON CONDICIONES).
+- [ ] Si hubo PoC: resultado registrado y supuestos confirmados o refutados.
 - [ ] Entregado al Orquestador para la puerta de Viabilidad.

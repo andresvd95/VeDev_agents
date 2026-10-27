@@ -16,10 +16,10 @@ Cada fase cierra con una puerta. Una puerta **no se salta**: si se atasca, el Or
 
 | # | Puerta | Checklist de salida | Tiempo orientativo |
 |---|---|---|---|
-| 1 | **Viabilidad** | Dictamen escrito VIABLE / VIABLE CON CONDICIONES / NO VIABLE con argumentos y riesgos | Horas |
+| 1 | **Viabilidad** | Dictamen escrito VIABLE / VIABLE CON CONDICIONES / NO VIABLE con argumentos y riesgos · resultado de la PoC si se exigió | Horas |
 | 2 | **Alcance** | Historias con criterios Dado/Cuando/Entonces verificables · MoSCoW · fuera de alcance explícito · PRD aprobado según el modo | 1–3 días |
 | 3 | **Arquitectura** | TDD con diagramas (Mermaid) · ADR de cada decisión mayor elegida por el usuario · modelo de amenazas (STRIDE) inicial | 1–3 días |
-| 4 | **Diseño UX/UI** (si hay interfaz) | Especificación de pantallas con estados · tokens definidos · 3 tamaños · WCAG 2.2 AA | 1–3 días |
+| 4 | **Diseño UX/UI** (si hay interfaz) | Especificación de pantallas con estados · tokens definidos · 3 tamaños (+ TV con mapa de foco si aplica) · WCAG 2.2 AA | 1–3 días |
 | 5 | **Construcción** | Revisión APROBADA · pruebas de humo verdes · tests de QA derivados de criterios de aceptación · tokens respetados en UI · sin secretos en el diff | Por historia |
 | 6 | **Seguridad** | Checklist firmado (`templates/security-checklist.md`) antes del release · dependencias auditadas · `.env` conforme | Horas |
 | 7 | **Documentación** | README, API, runbook y changelog reflejan el comportamiento actual | Horas |
@@ -32,6 +32,16 @@ Cada fase cierra con una puerta. Una puerta **no se salta**: si se atasca, el Or
 - [ ] Las entradas nuevas o modificadas se validan
 - [ ] No se amplían permisos ni se saltan controles de autorización
 - [ ] No se exponen datos sensibles en logs ni respuestas
+
+## Deploy a dispositivo (versión de las puertas 8 y 9)
+
+Cuando el deploy es instalar en un dispositivo concreto (TV, móvil, equipo), Release y Deploy se cumplen así:
+
+- [ ] Suite de humo verde y notas de versión (o entrada en el changelog si se acordó)
+- [ ] Respaldo verificado del estado del dispositivo antes de instalar
+- [ ] Restauración o rescate **probado** (no solo escrito)
+- [ ] Autorización del usuario para esa instalación
+- [ ] Verificación después de instalar (arranca, flujos críticos, sin regresiones visibles)
 
 ## Evidencia
 

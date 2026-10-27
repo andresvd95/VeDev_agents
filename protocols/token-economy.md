@@ -47,6 +47,9 @@ Ningún agente entra a una fase si su artefacto de salida no se consume en esa f
 - El Centinela registra el consumo por fase en `project-state.md`:
   - **Reportado** si el entorno expone el uso de tokens.
   - **Estimado** si no (por tamaño de entradas y salidas), y se marca como estimación.
+- **Medición por diferencia:** si el entorno muestra un contador acumulado de la sesión (tokens o costo), el Centinela anota el valor **al abrir y al cerrar cada fase** y registra la diferencia. Es más preciso que estimar y no requiere herramientas extra.
+- Fuentes en orden de preferencia: (1) uso reportado por la API o el entorno por fase, (2) diferencia del contador acumulado, (3) estimación. El registro indica cuál se usó.
+- Al cerrar el trabajo, el consumo total y por fase va a `project-state.md` y, en un piloto, al informe (`templates/pilot-report.md`).
 - Alertas al **50%, 80% y 100%** del presupuesto. Al 100% el Orquestador se detiene y pide decisión: ampliar presupuesto, reducir alcance o pausar.
 
 ## 8. Señales de desperdicio (el Orquestador las corrige)

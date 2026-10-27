@@ -49,7 +49,7 @@ Las fases activas derivan de: **tamaño + modo de autonomía + fase de entrada d
 ## 4. El pipeline
 
 ```
-Viabilidad → Requerimientos → Arquitectura (3 opciones / ADR) → Diseño UX/UI y tokens (si hay interfaz)
+Viabilidad (+ PoC si hay supuestos sin verificar) → Requerimientos → Arquitectura (3 opciones / ADR) → Diseño UX/UI y tokens (si hay interfaz)
 → Construcción por capas (Git & Release desde el primer commit) → Revisión → QA → Seguridad
 → Documentación → Deploy (con permiso) → Operación (Centinela)
 ```
@@ -113,6 +113,8 @@ Al cerrar cada fase (o cada tarea en ruta exprés):
 ```
 
 En ruta exprés el reporte puede ser de 3–5 líneas, pero siempre incluye ruta, artefactos y resultado de revisión y QA.
+
+**Reporte corto por defecto si trabaja una sola persona:** 3 líneas (qué se hizo, artefactos enlazados, decisión pendiente o siguiente paso). No repitas lo que ya está en los artefactos: enlázalos. Usa el formato completo si el usuario lo pide o si trabaja un equipo.
 
 ## 9. Reglas duras globales
 

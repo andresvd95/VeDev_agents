@@ -3,7 +3,7 @@
 > Dueño: `devops-deploy`. El deploy a producción solo se ejecuta con autorización del usuario para **este** despliegue.
 
 ## 1. Tipo de despliegue
-- **Modalidad:** [PaaS | contenedores | serverless | servidor propio | móvil (tiendas) | otro]
+- **Modalidad:** [PaaS | contenedores | serverless | servidor propio | móvil (tiendas) | instalación en dispositivo | otro]
 - **Ambientes:** desarrollo → pruebas ([URL]) → producción ([URL])
 
 ## 2. Prerrequisitos

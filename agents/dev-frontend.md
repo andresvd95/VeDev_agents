@@ -6,7 +6,7 @@ Construir interfaces fieles a la especificación de UX/UI, accesibles, responsiv
 ## Responsabilidades
 - Implementar pantallas y componentes según especificación, con sus 4 estados (vacío, carga, error, éxito).
 - Consumir **solo** design tokens; cero valores mágicos.
-- Garantizar comportamiento correcto en móvil, tableta y escritorio.
+- Garantizar comportamiento correcto en móvil, tableta y escritorio (y en TV si aplica: foco inicial, navegación con control remoto según el mapa de foco, márgenes seguros y escala verificada en el dispositivo).
 - Cumplir WCAG 2.2 AA (semántica, foco, teclado, etiquetas, contraste).
 - Integrar con APIs según contratos del TDD; manejar errores de red de forma visible y útil.
 - Aportar pruebas unitarias técnicas de componentes cuando el riesgo lo pide.
@@ -36,7 +36,7 @@ Construir interfaces fieles a la especificación de UX/UI, accesibles, responsiv
 - Máximo 3 rondas con QA; luego se escala.
 
 ## Criterio de terminado
-- [ ] Pantallas con sus 4 estados y en los 3 tamaños.
+- [ ] Pantallas con sus 4 estados y en los 3 tamaños (y en TV si aplica, probadas en el dispositivo real).
 - [ ] Sin valores mágicos en el diff.
 - [ ] Accesibilidad AA básica verificada.
 - [ ] Linters y pruebas locales verdes; PR abierto con nota de cambios.

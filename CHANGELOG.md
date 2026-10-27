@@ -5,6 +5,8 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). V
 ## [No publicado]
 
 ### Añadido
+- `docs/pilots/piloto-01-google-tv.md`: informe del primer piloto (launcher para Google TV, ruta PROYECTO).
+- Lecciones del piloto 01 aplicadas al núcleo: perfil de proyecto pequeño (uso personal, un dispositivo, sin red ni cuentas); prueba de concepto como paso opcional de la viabilidad; reporte corto por defecto con una sola persona; "especialista activo = convocado"; reglas para interfaces de TV (breakpoint `tv`, mapa y foco inicial, márgenes seguros); deploy a dispositivo con su versión de las puertas de Release y Deploy; medición de tokens por diferencia del contador del entorno.
 - `protocols/ceremony-options.md`: 18 entregables negociables que el Orquestador pregunta si reducir u omitir en FEATURE y PROYECTO (historias, PRD, ADR, ambiente de pruebas, documentación, etc.), con recomendación por punto, lista de no negociables y bloqueo por pack.
 
 ### Cambiado

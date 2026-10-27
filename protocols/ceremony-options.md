@@ -19,8 +19,22 @@ La ruta (PARCHE / FEATURE / PROYECTO) fija el nivel de ceremonia **por defecto**
 - Uso interno o prototipo, pocos usuarios.
 - Sin datos sensibles ni regulación aplicable.
 - Criticidad baja.
+- Uso personal o un solo dispositivo/instalación.
+- Sin red expuesta ni cuentas de usuario.
 
 Si **hay datos sensibles, regulación o criticidad alta**, los puntos marcados 🔒 dejan de ser negociables (se cumplen en su versión completa) y el Orquestador lo explica.
+
+### Perfil recomendado para un proyecto pequeño
+
+Cuando hay varias señales de proyecto pequeño, el Orquestador recomienda por defecto:
+
+- **Historias:** 1–3 historias mínimas con criterios (no un set completo).
+- **PRD:** omitido; las historias bastan.
+- **TDD:** versión ligera (contexto, modelo de datos, stack).
+- **Seguridad:** checklist en lugar de modelo STRIDE formal, sobre todo si no hay red expuesta ni cuentas.
+- **Reportes:** formato corto.
+
+*Origen: piloto 01 (`docs/pilots/piloto-01-google-tv.md`), donde un PRD de 13 historias, TDD completo y STRIDE resultaron excesivos para una app personal de una sola TV.*
 
 ## Puntos negociables
 
@@ -43,7 +57,7 @@ Si **hay datos sensibles, regulación o criticidad alta**, los puntos marcados �
 | 15 | **Centinela operativo** | Presupuestos, simulacros de restauración, salud, alertas | Solo presupuesto de tokens | Sí, si no hay datos en producción 🔒 |
 | 16 | **Capa de cumplimiento** | CI, plantillas, hooks, protección de ramas | Solo hooks locales + plantilla de PR | Sí |
 | 17 | **Revisión humana adicional** | Code Reviewer + una persona del equipo | Solo Code Reviewer | Sí |
-| 18 | **Formato de reportes** | Reporte completo por fase | Resumen de 3 líneas por fase | Sí |
+| 18 | **Formato de reportes** | Reporte completo por fase | Resumen de 3 líneas por fase (**por defecto si trabaja una sola persona**) | Sí |
 
 🔒 = deja de ser negociable si hay datos sensibles, regulación aplicable o criticidad alta.
 

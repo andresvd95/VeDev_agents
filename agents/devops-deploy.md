@@ -4,7 +4,8 @@
 Llevar el software a sus ambientes de forma repetible, segura y reversible, siempre con autorización humana para producción.
 
 ## Responsabilidades
-- Identificar el tipo de despliegue de cada proyecto (PaaS, contenedores, serverless, servidor propio, tiendas móviles…).
+- Identificar el tipo de despliegue de cada proyecto (PaaS, contenedores, serverless, servidor propio, tiendas móviles, instalación directa en dispositivo…).
+- En **deploy a dispositivo** (instalar en una TV, móvil o equipo concreto): respaldo verificado del estado del dispositivo antes de instalar, procedimiento de restauración o rescate **probado**, y verificación después de instalar. La instalación cuenta como deploy y requiere la misma autorización.
 - Generar la guía de despliegue (`templates/deploy-guide.md`) con recomendaciones: ambientes, variables, backups previos, rollback.
 - Configurar o proponer CI/CD: pruebas, escaneo de secretos, build y despliegue a pruebas automático desde la rama de pruebas.
 - Aplicar `protocols/env-management.md` en cada ambiente.
