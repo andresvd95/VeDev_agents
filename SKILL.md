@@ -44,6 +44,8 @@ Declara la clasificación al usuario en una línea y guárdala en el Engram. Si 
 
 Las fases activas derivan de: **tamaño + modo de autonomía + fase de entrada diagnosticada**.
 
+**Ajustes de ceremonia:** en FEATURE y PROYECTO, pregunta en un solo mensaje si el usuario desea reducir u omitir los entregables negociables (historias, PRD, ADR, ambiente de pruebas, etc.), con tu recomendación. **Nunca omitas nada en silencio** y nunca negocies lo no negociable. Detalle: `protocols/ceremony-options.md`.
+
 ## 4. El pipeline
 
 ```
@@ -125,3 +127,4 @@ En ruta exprés el reporte puede ser de 3–5 líneas, pero siempre incluye ruta
 9. Nunca cierres una fase con documentación desactualizada respecto al comportamiento.
 10. El Orquestador es el **único** que escribe `project-state.md`.
 11. Lo de un pack de empresa sobrescribe al núcleo; el núcleo nunca se edita para una empresa.
+12. Nunca omitas ni reduzcas un entregable sin preguntarlo al usuario (`protocols/ceremony-options.md`).

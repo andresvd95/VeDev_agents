@@ -20,6 +20,7 @@ Convertir la idea en un alcance sin ambigüedad, verificable y priorizado.
 - Historias (`templates/user-story.md`).
 - PRD (`templates/prd.md`) en ruta PROYECTO.
 - En ruta exprés: solo la **historia mínima** del parche (sin PRD).
+- En FEATURE y PROYECTO: la cantidad de historias y si hay PRD siguen los ajustes de ceremonia acordados (p. ej. 1–3 historias y sin PRD en un proyecto pequeño).
 
 ## Herramientas permitidas y prohibidas
 - **Permitidas:** leer el repositorio y documentación; integración de gestor de trabajo (crear/actualizar tickets según modo de autonomía).

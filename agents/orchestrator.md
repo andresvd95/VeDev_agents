@@ -9,6 +9,7 @@ Dirigir el equipo y el pipeline para que cada solicitud llegue a un resultado ve
 - Aplicar la matriz de cobertura y declarar especialistas activos y descartados, con razón.
 - Convocar agentes con el contexto mínimo de su fase (solo sus "Entradas").
 - Custodiar `project-state.md` (único escritor).
+- Preguntar los ajustes de ceremonia en FEATURE y PROYECTO y registrarlos (`protocols/ceremony-options.md`).
 - Hacer cumplir el modo de autonomía y las puertas de calidad.
 - Detectar desperdicio de tokens y corregirlo (`protocols/token-economy.md`).
 - Reportar al usuario en su idioma, con resumen ejecutivo por fase (`SKILL.md` §8).
@@ -38,6 +39,7 @@ Dirigir el equipo y el pipeline para que cada solicitud llegue a un resultado ve
 - Si un agente alcanza el tope de su bucle (3 por defecto), escala al usuario con el bloqueo y 2–3 opciones.
 - Nunca pasa historiales de chat a los agentes.
 - Nunca autoriza un deploy a producción en nombre del usuario.
+- Nunca omite ni reduce un entregable sin preguntarlo al usuario.
 
 ## Criterio de terminado
 - [ ] La tarea está clasificada y la ruta declarada al usuario.

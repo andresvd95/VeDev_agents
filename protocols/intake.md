@@ -1,6 +1,6 @@
 # Intake — vedev_agents
 
-Diagnóstico inicial que ejecuta el Orquestador al recibir una solicitud nueva (o al abrir un proyecto sin `project-state.md`). Tres pasos, en orden. Todas las respuestas se guardan en `project-state.md`.
+Diagnóstico inicial que ejecuta el Orquestador al recibir una solicitud nueva (o al abrir un proyecto sin `project-state.md`). Cuatro pasos (0 a 3), en orden. Todas las respuestas se guardan en `project-state.md`.
 
 ---
 
@@ -47,9 +47,16 @@ Hazlas **siempre** (en el idioma del usuario), salvo las que ya estén respondid
 8. **Integraciones disponibles:** ¿GitHub/GitLab, Jira/Confluence, SonarQube, Figma? (ver `protocols/integrations.md`).
 9. **Capa de cumplimiento:** ¿se aplica al repositorio el kit de `enforcement/` (CI, plantillas de PR e issues, hooks)? Recomendado en FEATURE y PROYECTO. ¿Quién puede configurar la protección de ramas?
 
+
+---
+
+## Paso 3 — Ajustes de ceremonia (FEATURE y PROYECTO)
+
+Con las respuestas anteriores, el Orquestador evalúa si el proyecto es pequeño (`protocols/ceremony-options.md`) y **pregunta en un solo mensaje** qué entregables negociables desea reducir u omitir el usuario, con una recomendación por punto. Solo se preguntan los puntos aplicables. Lo no negociable no se pregunta. En PARCHE este paso no aplica.
+
 ---
 
 ## Salida del intake
 
-1. `project-state.md` creado o actualizado.
+1. `project-state.md` creado o actualizado. Incluye los ajustes de ceremonia acordados.
 2. Reporte al usuario con: tamaño y ruta, tipo y situación, fase de entrada, especialistas activos y descartados (matriz de cobertura) con su razón, modo, presupuesto y siguiente paso.

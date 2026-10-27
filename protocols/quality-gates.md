@@ -10,6 +10,8 @@ Cada fase cierra con una puerta. Una puerta **no se salta**: si se atasca, el Or
 | **FEATURE** (estándar) | El subconjunto de puertas de las fases que la feature toca (normalmente Alcance, Arquitectura parcial, Construcción, Seguridad, Release) |
 | **PROYECTO** (completa) | Todas |
 
+**Ajustes de ceremonia:** si el usuario redujo u omitió un entregable negociable (`protocols/ceremony-options.md`), la puerta verifica el **nivel acordado** y registrado en el Engram, no el completo. Los no negociables se verifican siempre.
+
 ## Puertas completas
 
 | # | Puerta | Checklist de salida | Tiempo orientativo |

@@ -90,6 +90,10 @@ flowchart LR
 
 > **Regla de oro:** un bugfix nunca paga el peaje de un proyecto.
 
+### Ajustes para proyectos pequeños
+
+En FEATURE y PROYECTO, el Orquestador **pregunta** (nunca decide solo) si quieres reducir u omitir entregables negociables, con una recomendación por punto. Por ejemplo: 2–3 historias en vez del set completo, sin PRD, decisiones en una lista en vez de ADR, o sin rama `develop`. Lo no negociable se mantiene siempre: criterios de aceptación, revisión independiente, pruebas, sin secretos, nada directo a `main`, deploy con permiso. 👉 [protocols/ceremony-options.md](protocols/ceremony-options.md)
+
 ### El pipeline completo
 
 `Viabilidad → Requerimientos → Arquitectura → Diseño UX/UI → Construcción → Revisión → QA → Seguridad → Documentación → Deploy → Operación`
@@ -241,7 +245,7 @@ agents/           16 agentes del núcleo
   specialists/    7 especialistas bajo demanda
 protocols/        intake · autonomía · cobertura · 3 opciones · memoria · git/semver · .env
                   · design tokens · integraciones · economía de tokens · puertas de calidad
-                  · cumplimiento · interoperabilidad · piloto
+                  · cumplimiento · interoperabilidad · piloto · ajustes de ceremonia
 templates/        PRD · TDD · ADR · historia · estado del proyecto · seguridad · deploy · release
                   · auditoría · informe de piloto
 enforcement/      CI, plantillas de PR/issues, hooks y protección de ramas + apply.sh

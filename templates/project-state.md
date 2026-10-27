@@ -63,5 +63,10 @@
 ## 10. Riesgos y bloqueos
 - [riesgo/bloqueo — impacto — acción]
 
-## 11. Bitácora (últimas 10)
+## 11. Ajustes de ceremonia
+| Punto | Nivel (completo / reducido / omitido) | Decidió | Fecha |
+|---|---|---|---|
+| [p. ej. PRD] | [omitido] | [usuario] | [AAAA-MM-DD] |
+
+## 12. Bitácora (últimas 10)
 - [AAAA-MM-DD] [qué pasó en 1 línea]

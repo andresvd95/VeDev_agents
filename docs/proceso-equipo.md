@@ -12,6 +12,8 @@
 
 **Regla de oro:** un bugfix nunca paga el peaje de un proyecto. Ante la duda, elige el menor y súbelo si crece.
 
+**Proyectos pequeños:** en FEATURE y PROYECTO se pregunta (no se decide solo) si se reducen u omiten entregables negociables: número de historias, PRD, ADR, ambiente de pruebas, documentación extra, entre otros. Lo no negociable se mantiene siempre: criterios de aceptación, revisión, pruebas, sin secretos, nada directo a `main`, deploy con permiso. Lista completa: `protocols/ceremony-options.md`.
+
 ## 2. Definición de Listo (antes de programar)
 
 Una historia está lista para construirse si:

@@ -2,6 +2,15 @@
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado [SemVer](https://semver.org/lang/es/).
 
+## [No publicado]
+
+### Añadido
+- `protocols/ceremony-options.md`: 18 entregables negociables que el Orquestador pregunta si reducir u omitir en FEATURE y PROYECTO (historias, PRD, ADR, ambiente de pruebas, documentación, etc.), con recomendación por punto, lista de no negociables y bloqueo por pack.
+
+### Cambiado
+- `SKILL.md`, `protocols/intake.md` (nuevo Paso 3), `protocols/quality-gates.md`, `agents/orchestrator.md` y `agents/requirements-analyst.md`: nada se omite sin preguntar; las puertas verifican el nivel acordado.
+- `templates/project-state.md`: sección "Ajustes de ceremonia". `packs/README.md`: puntos bloqueados por empresa. Guía del equipo y README actualizados.
+
 ## [0.2.0] — 2026-10-25
 
 ### Añadido

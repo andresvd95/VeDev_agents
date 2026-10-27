@@ -91,6 +91,10 @@ Plantilla de `pack.md`:
 ## Memoria
 - Ruta de project-state.md: [raíz | docs/ | …]
 
+## Ajustes de ceremonia
+- Puntos bloqueados (no negociables en esta empresa): [p. ej. ADR, notas de versión]
+- Recomendaciones por defecto distintas al núcleo: [ … ]
+
 ## Agentes adicionales y reglas de activación
 - [nombre — cuándo se activa]
 ```
