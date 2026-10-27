@@ -2,7 +2,9 @@
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado [SemVer](https://semver.org/lang/es/).
 
-## [No publicado]
+## [1.0.0] — 2026-10-27
+
+Primera versión estable: probada en un proyecto real completo y personalizada para una empresa mediante un pack.
 
 ### Añadido
 - `docs/pilots/piloto-01-google-tv.md`: informe del primer piloto (launcher para Google TV, ruta PROYECTO).

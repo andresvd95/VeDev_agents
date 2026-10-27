@@ -6,8 +6,8 @@
 
 An AI software-engineering team in a box: 23 specialized agents (architect, UX/UI, devs, QA, cybersecurity, DevOps, DBA, BI…) that take any project from idea to production. Spec-driven, token-efficient, engine-agnostic — Claude Code, Cursor, Codex, OpenCode & more.
 
-![Versión](https://img.shields.io/badge/versión-v0.2.0-blue)
-![Estado](https://img.shields.io/badge/estado-piloto%20en%20curso-yellow)
+![Versión](https://img.shields.io/badge/versión-v1.0.0-blue)
+![Estado](https://img.shields.io/badge/estado-en%20uso%20real-brightgreen)
 ![Licencia](https://img.shields.io/badge/licencia-MIT-green)
 ![Agentes](https://img.shields.io/badge/agentes-23-purple)
 ![Formato](https://img.shields.io/badge/formato-Markdown%20puro-lightgrey)
@@ -419,13 +419,18 @@ docs/             guía del proceso para personas
 
 - [x] **v0.1.0** — Especificación completa: orquestador, 23 agentes, protocolos, plantillas, adaptadores
 - [x] **v0.2.0** — Capa de cumplimiento (CI, plantillas, hooks, protección de ramas), interoperabilidad y protocolo de piloto
-- [ ] **v0.3.0** — Piloto ejecutado en proyectos reales (un parche, una feature, un proyecto) con informe publicado · *en curso: 1 de 3 tareas*
-- [ ] **v0.4.0** — Adaptadores validados en cada entorno (incluye Orca y Hermes)
-- [ ] **v1.0.0** — Estable, con benchmark publicado
+- [x] **v1.0.0** — Primer proyecto real exitoso ([piloto 01](docs/pilots/piloto-01-google-tv.md)), lecciones aplicadas al núcleo, ajustes de ceremonia y primera personalización por empresa con un pack
+
+**Después de v1**
+- [ ] Más pilotos medidos (un PARCHE y una FEATURE) con tokens por fase
+- [ ] CI de la capa de cumplimiento ejecutado en repositorios reales
+- [ ] Adaptadores validados en cada entorno (incluye Orca y Hermes)
+- [ ] Entrevista técnica guiada antes de escribir historias
+- [ ] Benchmark publicado frente a trabajar sin proceso
 
 ## ⚠️ Estado y limitaciones
 
-Lo decimos claro: **el piloto va en 1 de 3 tareas.** El primer proyecto real (un launcher para Google TV, ruta PROYECTO) salió bien y sus lecciones ya están en el núcleo: [informe del piloto 01](docs/pilots/piloto-01-google-tv.md). Protocolo: [protocols/pilot.md](protocols/pilot.md).
+**v1.0.0 está en uso real.** Se aplicó en un proyecto completo (un launcher para Google TV, ruta PROYECTO) con buen resultado y se personalizó para una empresa mediante un pack, sin tocar el núcleo. Las lecciones del primer proyecto ya están incorporadas: [informe del piloto 01](docs/pilots/piloto-01-google-tv.md). Lo que todavía no está medido o verificado:
 
 - La eficiencia de tokens **aún no se mide con precisión**: el piloto 01 registró costo estimado, no tokens por fase. Desde ahora se mide por diferencia del contador del entorno.
 - La capa de cumplimiento se probó localmente (hooks e instalador), pero el CI aún no se ha ejecutado en un repositorio real.
@@ -433,7 +438,7 @@ Lo decimos claro: **el piloto va en 1 de 3 tareas.** El primer proyecto real (un
 - El consumo de tokens se reporta cuando el entorno lo expone; si no, se estima y se marca como estimación.
 - Los adaptadores de Orca y Hermes están por verificar.
 
-¿Lo probaste? Abre un issue con tu experiencia: es la forma más rápida de llegar a v1.0.
+¿Lo usaste? Abre un issue con tu experiencia: cada proyecto real mejora el núcleo.
 
 ---
 
