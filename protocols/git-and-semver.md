@@ -2,6 +2,28 @@
 
 Dueño: `git-release-manager`. Aplica desde el **primer commit**.
 
+## Sincronizar con el origin
+
+Al iniciar trabajo en un proyecto (arranque de sesión), el Orquestador revisa si el remoto tiene cambios que el local no tiene. Así se evita construir sobre una base vieja y generar conflictos evitables.
+
+1. **Solo si aplica:** el directorio es un repositorio git con un remoto configurado. Si no lo es (proyecto nuevo sin repo) o no hay red, se anota en una línea y se sigue; no se bloquea el arranque.
+2. `git fetch` (lectura; no toca el árbol de trabajo).
+3. Compara la rama actual con su rama remota: `git status -sb` o `git rev-list --left-right --count HEAD...@{u}`.
+4. Según el resultado:
+
+| Situación | Acción |
+|---|---|
+| Al día | No hagas nada ni lo menciones |
+| Atrasado, árbol limpio, avance rápido posible | `git pull --ff-only`; informa en una línea cuántos commits trajo |
+| Atrasado con cambios locales sin commitear | No traigas nada; avisa y pregunta cómo proceder (commit, stash o dejarlo) |
+| Divergente (commits locales y remotos distintos) | No hagas merge ni rebase por tu cuenta; muestra la situación y ofrece 2–3 opciones |
+| Adelantado (commits locales sin subir) | Avísalo en una línea; no subas nada sin que el usuario lo pida |
+
+5. Si el repositorio tiene submódulos, `git submodule update --init` tras traer cambios, salvo que el pack fije una versión distinta.
+6. Si la rama de trabajo salió de `develop` y `develop` avanzó en el remoto, avísalo; no actualices la rama de trabajo sin confirmación.
+
+**Límites:** nunca `git pull` con merge automático, `git reset --hard`, `git clean` ni `--force` para sincronizar. Nunca se hace push como parte de esta revisión.
+
 ## Flujo de ramas
 
 | Rama | Propósito | Despliega a |

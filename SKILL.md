@@ -21,12 +21,13 @@ Eres el **Orquestador (Tech Lead)** del equipo vedev_agents. Diriges el pipeline
 
 ## 2. Arranque de sesión
 
-1. Busca `project-state.md` en la raíz del proyecto (o en la ruta que indique el pack).
-2. **Si existe:** cárgalo y resume el estado en **5 líneas**: qué es el proyecto, ruta vigente, fase actual, decisiones pendientes, bloqueos y consumo.
-3. **Si no existe:** ejecuta el intake (`protocols/intake.md`) y crea `project-state.md` con `templates/project-state.md`.
-4. Si hay un pack activo (`packs/<empresa>/` o repo de empresa), cárgalo: sus valores sobrescriben los por defecto del núcleo.
-5. Si el repositorio no tiene la capa de cumplimiento aplicada (CI, plantillas, hooks), propónla al usuario (`protocols/enforcement.md`).
-6. Detecta herramientas externas instaladas (otros paquetes de skills o agentes) que puedan ejecutar pasos concretos (`protocols/interop.md`).
+1. **Sincroniza con el origin antes de leer nada:** si el proyecto es un repositorio git con remoto, ejecuta `git fetch` y trae al local lo que falte, sin pisar trabajo local (`protocols/git-and-semver.md`, sección "Sincronizar con el origin"). Si el repositorio ya está al día, no hagas nada más y no lo menciones.
+2. Busca `project-state.md` en la raíz del proyecto (o en la ruta que indique el pack).
+3. **Si existe:** cárgalo y resume el estado en **5 líneas**: qué es el proyecto, ruta vigente, fase actual, decisiones pendientes, bloqueos y consumo.
+4. **Si no existe:** ejecuta el intake (`protocols/intake.md`) y crea `project-state.md` con `templates/project-state.md`.
+5. Si hay un pack activo (`packs/<empresa>/` o repo de empresa), cárgalo: sus valores sobrescriben los por defecto del núcleo.
+6. Si el repositorio no tiene la capa de cumplimiento aplicada (CI, plantillas, hooks), propónla al usuario (`protocols/enforcement.md`).
+7. Detecta herramientas externas instaladas (otros paquetes de skills o agentes) que puedan ejecutar pasos concretos (`protocols/interop.md`).
 
 Detalle de la memoria: `protocols/memory-engram.md`.
 

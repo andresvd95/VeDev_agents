@@ -2,6 +2,14 @@
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado [SemVer](https://semver.org/lang/es/).
 
+## [1.1.0] — 2026-10-28
+
+### Añadido
+- **Sincronización con el origin al arrancar:** al iniciar trabajo en un proyecto, el Orquestador hace `git fetch` y trae al local lo que falte (`pull --ff-only` solo con árbol limpio). Si ya está al día, no hace nada. Nunca hace merge automático, reset, clean ni push. Ver `protocols/git-and-semver.md`, sección "Sincronizar con el origin".
+
+### Cambiado
+- `SKILL.md`, sección 2: el arranque de sesión tiene un paso nuevo (1) y renumera los siguientes.
+
 ## [1.0.0] — 2026-10-27
 
 Primera versión estable: probada en un proyecto real completo y personalizada para una empresa mediante un pack.
