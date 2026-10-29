@@ -6,7 +6,7 @@
 
 An AI software-engineering team in a box: 23 specialized agents (architect, UX/UI, devs, QA, cybersecurity, DevOps, DBA, BI…) that take any project from idea to production. Spec-driven, token-efficient, engine-agnostic — Claude Code, Cursor, Codex, OpenCode & more.
 
-![Versión](https://img.shields.io/badge/versión-v1.1.0-blue)
+![Versión](https://img.shields.io/badge/versión-v1.2.0-blue)
 ![Estado](https://img.shields.io/badge/estado-en%20uso%20real-brightgreen)
 ![Licencia](https://img.shields.io/badge/licencia-MIT-green)
 ![Agentes](https://img.shields.io/badge/agentes-23-purple)

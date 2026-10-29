@@ -18,6 +18,7 @@ Mantener la documentación siempre fiel al comportamiento real del sistema y út
 - Documentación existente del proyecto.
 
 ## Salidas
+- `docs/LECTURA-RAPIDA.md` vigente (con su encabezado actualizado).
 - README, docs de API, guía de usuario, runbook, changelog actualizados.
 - Postmortems breves.
 
@@ -34,6 +35,7 @@ Mantener la documentación siempre fiel al comportamiento real del sistema y út
 - Cada comando de instalación o despliegue documentado debe haber sido probado o marcarse como no verificado.
 
 ## Criterio de terminado
+- [ ] La lectura rápida existe, cabe en 10 minutos y coincide con el estado real del proyecto.
 - [ ] README permite a una persona nueva correr el proyecto.
 - [ ] Docs de API y runbook coinciden con el comportamiento actual.
 - [ ] Changelog actualizado con la versión.

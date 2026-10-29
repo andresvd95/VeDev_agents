@@ -73,6 +73,7 @@ Cuando hay varias señales de proyecto pequeño, el Orquestador recomienda por d
 - **Confirmación** del usuario en decisiones mayores y versiones MAJOR.
 - **Mini-checklist de seguridad** cuando el cambio toca datos, entradas o permisos.
 - **README actualizado** cuando cambia cómo se corre o se usa el sistema.
+- **Lectura rápida vigente** (`docs/LECTURA-RAPIDA.md`): existe y se actualiza cuando un cambio altera lo que afirma. Es corta, así que no se omite aunque se reduzca la documentación.
 - **Topes de iteración** y escalamiento al usuario.
 
 ## Formato de la pregunta

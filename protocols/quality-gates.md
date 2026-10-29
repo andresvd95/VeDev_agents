@@ -22,7 +22,7 @@ Cada fase cierra con una puerta. Una puerta **no se salta**: si se atasca, el Or
 | 4 | **Diseño UX/UI** (si hay interfaz) | Especificación de pantallas con estados · tokens definidos · 3 tamaños (+ TV con mapa de foco si aplica) · WCAG 2.2 AA | 1–3 días |
 | 5 | **Construcción** | Revisión APROBADA · pruebas de humo verdes · tests de QA derivados de criterios de aceptación · tokens respetados en UI · sin secretos en el diff | Por historia |
 | 6 | **Seguridad** | Checklist firmado (`templates/security-checklist.md`) antes del release · dependencias auditadas · `.env` conforme | Horas |
-| 7 | **Documentación** | README, API, runbook y changelog reflejan el comportamiento actual | Horas |
+| 7 | **Documentación** | README, API, runbook y changelog reflejan el comportamiento actual · `docs/LECTURA-RAPIDA.md` existe, vigente y de 5–10 minutos | Horas |
 | 8 | **Release** | Suite completa verde en la rama de pruebas · notas de versión · versión SemVer justificada · **backup verificado** antes de desplegar | Horas |
 | 9 | **Deploy** | Autorización del usuario para ese despliegue · verificación de salud post-deploy con el Centinela · plan de rollback listo | Horas |
 

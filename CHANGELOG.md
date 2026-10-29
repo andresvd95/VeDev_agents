@@ -2,6 +2,16 @@
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado [SemVer](https://semver.org/lang/es/).
 
+## [1.2.0] — 2026-10-29
+
+### Añadido
+- **Lectura rápida del proyecto:** `docs/LECTURA-RAPIDA.md`, un documento de 5–10 minutos (regla Pareto: el 20 % que da el 100 % del contexto) que el Documentador crea si no existe y actualiza solo cuando un cambio altera lo que afirma. Plantilla en `templates/project-brief.md`. Entra en la puerta de calidad 7, en los no negociables de ceremonia y en el arranque de sesión del Orquestador.
+- **Quién decide el modelo:** `protocols/token-economy.md` fija la precedencia (usuario → skill y pack → mod o enrutador del entorno → presión de uso, que solo avisa). El Orquestador fija el modelo en cada lanzamiento con la línea `modelo-fijado: <haiku|sonnet|opus>` al inicio del prompt del agente, para que un mod no lo reemplace.
+
+### Cambiado
+- `SKILL.md`: el arranque detecta si falta la lectura rápida; las reglas de enrutamiento piden evaluar su actualización al cerrar cada tarea (incluso PARCHE).
+- `agents/documenter.md`: nueva responsabilidad, salida y criterio de terminado.
+
 ## [1.1.0] — 2026-10-28
 
 ### Añadido

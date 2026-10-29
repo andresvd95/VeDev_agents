@@ -12,6 +12,15 @@
 
 El pack o el usuario mapea cada piso a modelos concretos del entorno. Si el entorno solo tiene un modelo, los pisos se ignoran pero el resto de reglas sigue.
 
+### Quién decide el modelo (precedencia)
+
+1. **El usuario** (una instrucción expresa en la sesión, o `/model`) manda sobre todo lo demás.
+2. **Esta skill (y el pack):** el piso de cada agente es la decisión del equipo. El Orquestador **fija el modelo en cada lanzamiento de agente**: pasa el parámetro `model` si el entorno lo admite y, además, escribe como **primera línea del prompt del agente** `modelo-fijado: <haiku|sonnet|opus>` (el modelo concreto que el pack asigna a ese piso). Esa línea permite que un mod o enrutador del entorno reconozca que una skill ya decidió y no la reemplace.
+3. **Un mod o enrutador del entorno** (por ejemplo, un router de modelo por costo) solo decide cuando la skill no dijo nada. Si el mod no entiende la línea `modelo-fijado`, la skill igualmente declara su elección, y el Orquestador verifica en el reporte el modelo que realmente corrió.
+4. **Presión de uso** (límites de la suscripción): avisa, pero **no baja** un modelo fijado por la skill. Si el uso es alto, el Orquestador propone al usuario bajar el piso, reducir alcance o pausar, en lugar de degradar en silencio.
+
+Si el entorno corre por suscripción (no por API), los modelos disponibles y los límites dependen del plan; el pack debe mapear los pisos solo a modelos que el plan incluya.
+
 ## 2. Comunicación por artefactos
 
 - Los agentes se comunican **solo** por artefactos con plantilla (`templates/`): entradas acotadas, salidas acotadas.
